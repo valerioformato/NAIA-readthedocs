@@ -23,9 +23,10 @@ and a `setenv` script is already provided with each NAIA version, e.g. for CentO
 
 For the ntuple production some additional requirements are needed:
 * A gbatch installation compiled with
-    * `export NOCXXSTD=1` (gbatch hardcodes `-std=c++11` in the Makefile... This variable prevents that)
-    * `export GLIBCXX_USE_CXX11=1` (gbatch hardcodes the old gcc ABI in the Makefile... Most likely someone didn't know what he was doing)
-    * Run `CPPFLAGS="-std=c++14" make lib` to build the gbatch library (if you don't want to hack the Makefile and change the C++ standard manually)
+
+  * `export NOCXXSTD=1` (gbatch hardcodes `-std=c++11` in the Makefile... This variable prevents that)
+  * `export GLIBCXX_USE_CXX11=1` (gbatch hardcodes the old gcc ABI in the Makefile... Most likely someone didn't know what he was doing)
+  * Run `CPPFLAGS="-std=c++14" make lib` to build the gbatch library (if you don't want to hack the Makefile and change the C++ standard manually)
 
 
 Building and installing
@@ -33,15 +34,20 @@ Building and installing
 
 Follow this simple procedure
 * Clone this repository
-    * (Kerberos) `git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git`
-    * (SSH) `git clone ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git`
-    * (HTTPS) `git clone https://gitlab.cern.ch/ams-italy/naia.git`
+
+  * (Kerberos) `git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git`
+  * (SSH) `git clone ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git`
+  * (HTTPS) `git clone https://gitlab.cern.ch/ams-italy/naia.git`
+
 * Create a build and install directory
-    * e.g: `mkdir naia.build naia.install`
+
+  * e.g: `mkdir naia.build naia.install`
+
 * Build the project
-    * `cd naia.build` 
-    * `cmake ../naia` (for ntuple production add the `-DPRODUCTION_CODE=ON` arg)
-    * `make all install`
+
+  * `cd naia.build` 
+  * `cmake ../naia` (for ntuple production add the `-DPRODUCTION_CODE=ON` arg)
+  * `make all install`
 
 .. **Lumache** (/lu'make/) is a Python library for cooks and food lovers
 .. that creates recipes mixing random ingredients.
