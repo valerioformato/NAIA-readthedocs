@@ -34,7 +34,8 @@ For the ntuple production some additional requirements are needed:
 Building and installing
 =======================
 
-Follow this simple procedure
+Follow this simple procedure:
+
 * Clone this repository
 
   * (Kerberos) ``git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git``
@@ -61,7 +62,7 @@ Follow this simple procedure
 
 .. note::
 
-   This project is under active development.
+   For any question or in case you need help write to valerio.formato@cern.ch 
 
 Contents
 --------
