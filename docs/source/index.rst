@@ -8,6 +8,7 @@ multiple groups.
 Requirements
 ============
 To use NAIA you'll need:
+
 * A C++ compiler with full c++14 support (tested with gcc >= 7.3.0)
 * CMake version >= 3.13
 * A ROOT installation compiled with c++14 support (tested with ROOT >= 6.18/04)
@@ -22,6 +23,7 @@ and a ``setenv`` script is already provided with each NAIA version, e.g. for Cen
 
 
 For the ntuple production some additional requirements are needed:
+
 * A gbatch installation compiled with
 
   * ``export NOCXXSTD=1`` (gbatch hardcodes ``-std=c++11`` in the Makefile... This variable prevents that)
