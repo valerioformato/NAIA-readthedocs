@@ -62,7 +62,7 @@ data from file
     .. code-block:: cpp
 
         // Get the inner tracker charge from the "trTrackBase" container
-        auto innerCharge = event.trTrackBase->Charge[TrTrack::ChargeRecoType::YJ];
+        auto innerCharge = event.trTrackBase->Charge[NAIA::TrTrack::ChargeRecoType::YJ];
 
 Variable types and structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -78,8 +78,8 @@ If you want to make sure that a given variant exists you can use the ``KeyExists
 
 .. code-block:: cpp
 
-  if (KeyExists(Tof::ChargeType::Upper, event.tofBase->Charge))
-    tofCharge = event.tofBase->Charge[Tof::ChargeType::Upper];
+  if (NAIA::KeyExists(NAIA::Tof::ChargeType::Upper, event.tofBase->Charge))
+    tofCharge = event.tofBase->Charge[NAIA::Tof::ChargeType::Upper];
 
 because it is not guaranteed that, for example, a particular reconstruction succeeded, or that there is a hit on a given layer.
 
@@ -119,52 +119,121 @@ variant is available. The archetypes in the NAIA data model are:
   * Uses the ``Rich::BetaType`` enum for access
   * .. code-block:: cpp
 
-      template<class T >
+      template<class T>
       using RichBetaVariable = std::map< Rich::BetaType, T >
  
-.. template<class T >
-.. using 	TofChargeVariable = std::map< Tof::ChargeType, T >
+* ``TofChargeVariable``: one number for each kind of Tof charge.
+
+  * Uses the ``Tof::ChargeType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using	TofChargeVariable = std::map< Tof::ChargeType, T >
  
-.. template<class T >
-.. using 	TofBetaVariable = std::map< Tof::BetaType, T >
+* ``TofBetaVariable``: one number for each Tof beta reconstruction type.
+
+  * Uses the ``Tof::BetaType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using	TofBetaVariable = std::map< Tof::BetaType, T >
  
-.. template<class T >
-.. using 	TofClusterTypeVariable = std::map< Tof::BetaClusterType, T >
+* ``TofClusterTypeVariable``: one number for each Tof cluster type.
+
+  * Uses the ``Tof::BetaClusterType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using	TofClusterTypeVariable = std::map< Tof::BetaClusterType, T >
  
-.. template<class T >
-.. using 	TrdChargeVariable = std::vector< T >
+* ``TrdChargeVariable``: one number for each TRD charge reconstruction type.
+
+  * Uses the ``TrdK::ChargeType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using TrdChargeVariable = std::vector< T >
  
-.. template<class T >
-.. using 	TrdLikelihoodVariable = std::vector< T >
+* ``TrdLikelihoodVariable``: one number for each TRD likelihood type.
+
+  * Uses the ``TrdK::LikelihoodType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using	TrdLikelihoodVariable = std::vector< T >
  
-.. template<class T >
-.. using 	TrdLikelihoodRVariable = std::vector< T >
+* ``TrdLikelihoodRVariable``: one number for each TRD likelihood ratio type.
+
+  * Uses the ``TrdK::LikelihoodRType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using TrdLikelihoodRVariable = std::vector< T >
  
-.. template<class T >
-.. using 	TrdOnTrackVariable = std::vector< T >
+* ``TrdOnTrackVariable``: one number for on-track / off-track TRD hits.
+
+  * Uses the ``TrdK::QualType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using TrdOnTrackVariable = std::vector< T >
  
-.. template<class T >
-.. using 	TrackChargeVariable = std::map< TrTrack::ChargeRecoType, T >
+* ``TrackChargeVariable``: one number for each Tracker charge reconstruction type.
+
+  * Uses the ``TrTrack::ChargeRecoType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using	TrackChargeVariable = std::map< TrTrack::ChargeRecoType, T >
  
-.. template<class T >
-.. using 	TrackFitVariable = std::map< TrTrack::Fit, std::map< TrTrack::Span, T >>
+* ``TrackFitVariable``: one number for each track fitting type, and for each track span type.
+
+  * Uses the ``TrTrack::Fit`` and ``TrTrack::Span`` enums for access
+  * .. code-block:: cpp
+
+       template<class T>
+       using TrackFitVariable = std::map< TrTrack::Fit, std::map< TrTrack::Span, T >>
  
-.. template<class T >
-.. using 	TrackFitOnlyVariable = std::map< TrTrack::Fit, T >
+* ``TrackFitOnlyVariable``: one number for each Track fit type.
+
+  * Uses the ``TrTrack::Fit`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using TrackFitOnlyVariable = std::map< TrTrack::Fit, T >
  
-.. template<class T >
-.. using 	TrackFitPosVariable = std::map< TrTrack::FitPositionHeight, T >
+* ``TrackFitPosVariable``: one number for each fixed z-position in the Tracker.
+
+  * Uses the ``TrTrack::FitPositionHeight`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using TrackFitPosVariable = std::map< TrTrack::FitPositionHeight, T >
  
-.. template<class T >
-.. using 	TrackSideVariable = std::map< TrTrack::Side, T >
+* ``TrackSideVariable``: one number for each Tracker side.
+
+  * Uses the ``TrTrack::Side`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using TrackSideVariable = std::map< TrTrack::Side, T >
  
-.. template<class T >
-.. using 	TrackDistanceVariable = std::map< TrTrack::DistanceFromTrack, T >
+* ``TrackDistanceVariable``: one number for each distance-from-the-track type.
+
+  * Uses the ``TrTrack::DistanceFromTrack`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using 	TrackDistanceVariable = std::map< TrTrack::DistanceFromTrack, T >
  
-.. template<class T >
-.. using 	HitChargeVariable = std::map< TrTrack::ChargeRecoType, T >
+* ``HitChargeVariable``: same as ``TrackChargeVariable``
  
-.. template<class T >
-.. using 	LayerVariable = std::map< unsigned int, T >
+* ``LayerVariable``: one number for each layer (applies to Tracker, Tof, TRD, ...).
+
+  * Uses the layer number ``(0, ..., N-1)`` for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using LayerVariable = std::map< unsigned int, T >
 
 Please refer to the doxygen documentation for all the details.
