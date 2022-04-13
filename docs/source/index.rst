@@ -72,9 +72,10 @@ To use the NAIA ntuples your project needs:
 
 The recommended way of using NAIA in your project is to use CMake and let it do all the heavy lifting for you.
 NAIA targets are set up so that required includes and libraries are automatically passed to your targets. 
-In your ``CMakeLists.txt`` you just need::
+In your ``CMakeLists.txt`` you just need:
 
 .. code-block:: cmake
+
   find_package(NAIA REQUIRED)
   
   set(SOURCES MyProgram.cpp)
