@@ -83,10 +83,14 @@ If you want to make sure that a given variant exists you can use the ``KeyExists
 
 because it is not guaranteed that, for example, a particular reconstruction succeeded, or that there is a hit on a given layer.
 
+.. note::
+  Not all variables are stored in associative containers, when we know that all possible variants of a variable will be present
+  we use a ``std::vector`` instead.
+
 In NAIA there are several variable archetype defined, so that it is clear which ``enum`` to use and what kind of variable 
 variant is available. The archetypes in the NAIA data model are:
 
-* EcalEnergyVariable: one number for each energy reconstruction type.
+* ``EcalEnergyVariable``: one number for each energy reconstruction type.
 
   * Uses the ``Ecal::EnergyRecoType`` enum for access
   * .. code-block:: cpp
@@ -94,14 +98,29 @@ variant is available. The archetypes in the NAIA data model are:
       template<class T>
       using EcalEnergyVariable = std::vector< T >
  
-.. template<class T >
-.. using 	EcalLikelihoodVariable = std::vector< T >
+* ``EcalLikelihoodVariable``: one number for each likelihood type.
+
+  * Uses the ``Ecal::LikelihoodType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using	EcalLikelihoodVariable = std::vector< T >
  
-.. template<class T >
-.. using 	EcalBDTVariable = std::vector< T >
+* ``EcalBDTVariable``: one number for each BDT type.
+
+  * Uses the ``Ecal::BDTType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using EcalBDTVariable = std::vector< T >
  
-.. template<class T >
-.. using 	RichBetaVariable = std::map< Rich::BetaType, T >
+* ``RichBetaVariable``: one number for each RICH beta reconstruction type.
+
+  * Uses the ``Rich::BetaType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T >
+      using RichBetaVariable = std::map< Rich::BetaType, T >
  
 .. template<class T >
 .. using 	TofChargeVariable = std::map< Tof::ChargeType, T >
