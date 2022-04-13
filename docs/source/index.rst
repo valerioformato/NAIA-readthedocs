@@ -1,5 +1,5 @@
 NAIA (Ntuple for AMS-Italy Analysis)
-===================================
+====================================
 
 This is the official documentation page for the **NAIA** project. The project
 focuses on providing a common data format for AMS analysis that can be shared by
@@ -59,6 +59,60 @@ Follow this simple procedure:
 
 .. Check out the :doc:`usage` section for further information, including
 .. how to :ref:`installation` the project.
+
+Using the project
+=================
+
+To use the NAIA ntuples your project needs:
+
+* the headers in ``naia.install/include``
+* the ``naia.install/lib/libNAIAUtility.so`` library
+* the ``naia.install/lib/libNAIAContainers.so`` library
+* the ``naia.install/lib/libNAIAChain.so`` library
+
+The recommended way of using NAIA in your project is to use CMake and let it do all the heavy lifting for you.
+NAIA targets are set up so that required includes and libraries are automatically passed to your targets. 
+In your ``CMakeLists.txt`` you just need::
+
+.. code-block:: cmake
+  find_package(NAIA REQUIRED)
+  
+  set(SOURCES MyProgram.cpp)
+
+  add_executable(MyProgram ${SOURCES})
+  target_link_libraries(MyProgram NAIA::NAIAChain)
+
+and you should be good to go.
+
+Alternatively you can set up your own makefile and do all the work manually. For this see the examples provided in the 
+NAIA repository. 
+
+Included facilities
+===================
+
+These two libraries are automatically build with the project and included in the installation so that they could be used out-of-the-box
+
+fmt
+---
+
+See https://github.com/fmtlib/fmt
+
+This is a library for text formatting that implements the `formatting specification introduced in the C++20 standard <https://en.cppreference.com/w/cpp/utility/format>`_, 
+the syntax is similar to the `python format() function <https://www.w3schools.com/python/ref_string_format.asp>`_.
+It's a header-only library that is always lighter and faster than using iostream (`example <https://github.com/fmtlib/fmt#speed-tests>`_).
+
+.. note:: It is incredibly useful and flexible once you get used to the syntax (and it's way better than littering your code with thousands of ``<<``)
+
+spdlog
+------
+
+https://github.com/gabime/spdlog
+
+This is a header-only library for asynchronous logging build on top of ``fmt`` which allows to quickly log messages from a program with different 
+levels of depth, customization and filtering.
+
+.. note:: It can be useful saving you from several ``if(DEBUG) std::cout << "debug statement" << std::endl;`` :)
+
 
 .. note::
 
