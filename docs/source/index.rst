@@ -10,9 +10,9 @@ Docs:
 
 Take a look at:
 
-* Building and installing: :doc:`datamodel/build-install`
-* The NAIA data model: :doc:`datamodel/datamodel`
-* The ``Event`` class: :doc:`datamodel/event`
+* :doc:`build-install`
+* :doc:`datamodel/datamodel`
+* :doc:`datamodel/event`
 
 .. toctree::
    :maxdepth: 2

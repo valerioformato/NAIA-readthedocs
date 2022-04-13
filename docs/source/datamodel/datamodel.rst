@@ -60,5 +60,92 @@ data from file
     Example:
 
     .. code-block:: cpp
+
         // Get the inner tracker charge from the "trTrackBase" container
         auto innerCharge = event.trTrackBase->Charge[TrTrack::ChargeRecoType::YJ];
+
+Variable types and structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Most variables in AMS analysis are computed for several different variants, which usually refer to different 
+possible reconstructions of the same quantity. To mantain the data format as light as possible, and not 
+write to disk non-existing data, variables in NAIA are often implemented as associative containers 
+(e.g: ``std::map``).
+
+If that is the case, then there is always a ``enum`` describing all the available variants for a given variable.
+
+If you want to make sure that a given variant exists you can use the ``KeyExists`` function
+
+.. code-block:: cpp
+
+  if (KeyExists(Tof::ChargeType::Upper, event.tofBase->Charge))
+    tofCharge = event.tofBase->Charge[Tof::ChargeType::Upper];
+
+because it is not guaranteed that, for example, a particular reconstruction succeeded, or that there is a hit on a given layer.
+
+In NAIA there are several variable archetype defined, so that it is clear which ``enum`` to use and what kind of variable 
+variant is available. The archetypes in the NAIA data model are:
+
+* EcalEnergyVariable: one number for each energy reconstruction type.
+
+  * Uses the ``Ecal::EnergyRecoType`` enum for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using EcalEnergyVariable = std::vector< T >
+ 
+.. template<class T >
+.. using 	EcalLikelihoodVariable = std::vector< T >
+ 
+.. template<class T >
+.. using 	EcalBDTVariable = std::vector< T >
+ 
+.. template<class T >
+.. using 	RichBetaVariable = std::map< Rich::BetaType, T >
+ 
+.. template<class T >
+.. using 	TofChargeVariable = std::map< Tof::ChargeType, T >
+ 
+.. template<class T >
+.. using 	TofBetaVariable = std::map< Tof::BetaType, T >
+ 
+.. template<class T >
+.. using 	TofClusterTypeVariable = std::map< Tof::BetaClusterType, T >
+ 
+.. template<class T >
+.. using 	TrdChargeVariable = std::vector< T >
+ 
+.. template<class T >
+.. using 	TrdLikelihoodVariable = std::vector< T >
+ 
+.. template<class T >
+.. using 	TrdLikelihoodRVariable = std::vector< T >
+ 
+.. template<class T >
+.. using 	TrdOnTrackVariable = std::vector< T >
+ 
+.. template<class T >
+.. using 	TrackChargeVariable = std::map< TrTrack::ChargeRecoType, T >
+ 
+.. template<class T >
+.. using 	TrackFitVariable = std::map< TrTrack::Fit, std::map< TrTrack::Span, T >>
+ 
+.. template<class T >
+.. using 	TrackFitOnlyVariable = std::map< TrTrack::Fit, T >
+ 
+.. template<class T >
+.. using 	TrackFitPosVariable = std::map< TrTrack::FitPositionHeight, T >
+ 
+.. template<class T >
+.. using 	TrackSideVariable = std::map< TrTrack::Side, T >
+ 
+.. template<class T >
+.. using 	TrackDistanceVariable = std::map< TrTrack::DistanceFromTrack, T >
+ 
+.. template<class T >
+.. using 	HitChargeVariable = std::map< TrTrack::ChargeRecoType, T >
+ 
+.. template<class T >
+.. using 	LayerVariable = std::map< unsigned int, T >
+
+Please refer to the doxygen documentation for all the details.
