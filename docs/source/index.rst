@@ -5,11 +5,6 @@ This is the official documentation page for the **NAIA** project. The project
 focuses on providing a common data format for AMS analysis that can be shared by
 multiple groups.
 
-.. toctree::
-   :maxdepth: 2
-   :hidden:
-   :caption: Getting started
-
 Requirements
 ------------
 To use NAIA you'll need:
@@ -138,3 +133,7 @@ Take a look at:
    :caption: Getting started
 
    /datamodel/datamodel
+   /datamodel/event
+
+
+.. contents::
