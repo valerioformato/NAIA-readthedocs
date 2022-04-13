@@ -6,7 +6,7 @@ focuses on providing a common data format for AMS analysis that can be shared by
 multiple groups.
 
 Requirements
-============
+------------
 To use NAIA you'll need:
 
 * A C++ compiler with full c++14 support (tested with gcc >= 7.3.0)
@@ -32,7 +32,7 @@ For the ntuple production some additional requirements are needed:
 
 
 Building and installing
-=======================
+-----------------------
 
 Follow this simple procedure:
 
@@ -61,7 +61,7 @@ Follow this simple procedure:
 .. how to :ref:`installation` the project.
 
 Using the project
-=================
+-----------------
 
 To use the NAIA ntuples your project needs:
 
@@ -89,12 +89,12 @@ Alternatively you can set up your own makefile and do all the work manually. For
 NAIA repository. 
 
 Included facilities
-===================
+-------------------
 
 These two libraries are automatically build with the project and included in the installation so that they could be used out-of-the-box
 
 fmt
----
+^^^
 
 See https://github.com/fmtlib/fmt
 
@@ -105,7 +105,7 @@ It's a header-only library that is always lighter and faster than using iostream
 .. note:: It is incredibly useful and flexible once you get used to the syntax (and it's way better than littering your code with thousands of ``<<``)
 
 spdlog
-------
+^^^^^^
 
 https://github.com/gabime/spdlog
 
@@ -119,10 +119,3 @@ levels of depth, customization and filtering.
 
    For any question or in case you need help write to valerio.formato@cern.ch 
 
-Contents
---------
-
-.. toctree::
-
-   usage
-   api
