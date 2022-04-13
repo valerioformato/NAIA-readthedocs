@@ -119,3 +119,17 @@ levels of depth, customization and filtering.
 
    For any question or in case you need help write to valerio.formato@cern.ch 
 
+
+From here
+---------
+
+Take a look at:
+
+* The NAIA data model: :doc:`datamodel/datamodel.rst`
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Getting started
+
+   /datamodel/datamodel
