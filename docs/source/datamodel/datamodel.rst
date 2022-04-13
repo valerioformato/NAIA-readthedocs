@@ -28,7 +28,7 @@ The chain contains all the events in the added runs, looping over events is part
       // your analysis here :)
     }
 
-If you're uncomfortable with range-based for loops you can still do it the old fashioned way
+If you're uncomfortable with `range-based for loops <https://en.cppreference.com/w/cpp/language/range-for>`_ you can still do it the old fashioned way
 
 .. code-block:: cpp
 
@@ -236,4 +236,4 @@ variant is available. The archetypes in the NAIA data model are:
       template<class T>
       using LayerVariable = std::map< unsigned int, T >
 
-Please refer to the doxygen documentation for all the details.
+Please refer to the `doxygen documentation <https://naia-docs.web.cern.ch/naia-docs/annotated.html>`_ for all the details.
