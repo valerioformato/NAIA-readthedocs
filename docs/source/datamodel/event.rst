@@ -109,7 +109,7 @@ in the ``Header`` container.
 
           for (NAIA::Event &event : chain) {
             // check charge with TOF or Tracker
-            if (!MatchAnyBit(event.header->Mask(), cat))
+            if (!NAIA::MatchAnyBit(event.header->Mask(), cat))
               continue;
 
     (n.b: the ``CheckMask`` method uses the ``MatchAllBits`` free function)

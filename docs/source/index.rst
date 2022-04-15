@@ -22,5 +22,5 @@ Take a look at:
    /build-install
    /datamodel/datamodel
    /datamodel/event
-
+   /examples
 
