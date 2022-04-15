@@ -17,14 +17,15 @@ and a ``setenv`` script is already provided with each NAIA version, e.g. for Cen
 
   /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc9.3/naia/v0.1.0/setenvs/setenv_gcc6.22_cc7.sh
 
+.. note::
 
-For the ntuple production some additional requirements are needed:
-
-* A gbatch installation compiled with
-
-  * ``export NOCXXSTD=1`` (gbatch hardcodes ``-std=c++11`` in the Makefile... This variable prevents that)
-  * ``export GLIBCXX_USE_CXX11=1`` (gbatch hardcodes the old gcc ABI in the Makefile... Most likely someone didn't know what he was doing)
-  * Run ``CPPFLAGS="-std=c++14" make lib`` to build the gbatch library (if you don't want to hack the Makefile and change the C++ standard manually)
+    For the ntuple production some additional requirements are needed:
+    
+    * A gbatch installation compiled with
+    
+      * ``export NOCXXSTD=1`` (gbatch hardcodes ``-std=c++11`` in the Makefile... This variable prevents that)
+      * ``export GLIBCXX_USE_CXX11=1`` (gbatch hardcodes the old gcc ABI in the Makefile... Most likely someone didn't know what he was doing)
+      * Run ``CPPFLAGS="-std=c++14" make lib`` to build the gbatch library (if you don't want to hack the Makefile and change the C++ standard manually)
 
 
 Building and installing
@@ -48,13 +49,6 @@ Follow this simple procedure:
   * ``cmake ../naia`` (for ntuple production add the ``-DPRODUCTION_CODE=ON`` arg)
   * ``make all install``
 
-.. **Lumache** (/lu'make/) is a Python library for cooks and food lovers
-.. that creates recipes mixing random ingredients.
-.. It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-.. and offers a *simple* and *intuitive* API.
-
-.. Check out the :doc:`usage` section for further information, including
-.. how to :ref:`installation` the project.
 
 Using the project
 -----------------
