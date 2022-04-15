@@ -41,7 +41,7 @@ To compile you need to update the ``NAIA_DIR`` variable inside the ``Makefile`` 
 Remember to add include paths/libraries if needed or if something changes in the NAIA project.
 
 ROOT macros
------------
+^^^^^^^^^^^
 
 Before running the examples as a ROOT macros you need to either load the ``load.C`` macro beforehand
 
@@ -76,7 +76,7 @@ care of the rest by itself.
 "Data" class.
 
 Simple macro
-^^^^^^^^^^^^
+------------
 
 .. note::
 
