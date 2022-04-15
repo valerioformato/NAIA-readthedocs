@@ -63,6 +63,8 @@ data from file
 
         // Get the inner tracker charge from the "trTrackBase" container
         auto innerCharge = event.trTrackBase->Charge[NAIA::TrTrack::ChargeRecoType::YJ];
+        //                                  ^^
+        //                            this is very important :)
 
 Variable types and structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -74,7 +76,7 @@ write to disk non-existing data, variables in NAIA are often implemented as asso
 
 If that is the case, then there is always a ``enum`` describing all the available variants for a given variable.
 
-If you want to make sure that a given variant exists you can use the ``KeyExists`` function
+If you want to make sure that a given variant exists you can use the ``KeyExists`` `function <https://naia-docs.web.cern.ch/naia-docs/group__contvar.html#gadbb95738c905854cc9e90e40f4789072>`_
 
 .. code-block:: cpp
 
