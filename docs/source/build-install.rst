@@ -34,9 +34,9 @@ Follow this simple procedure:
 
 * Clone this repository
 
-  * (Kerberos) ``git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git``
-  * (SSH) ``git clone ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git``
-  * (HTTPS) ``git clone https://gitlab.cern.ch/ams-italy/naia.git``
+  * ``git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git`` (Kerberos)
+  * ``git clone ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git`` (SSH) 
+  * ``git clone https://gitlab.cern.ch/ams-italy/naia.git`` (HTTPS) 
 
 * Create a build and install directory
 

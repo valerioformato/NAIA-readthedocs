@@ -104,7 +104,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	EcalLikelihoodVariable = std::vector< T >
+      using EcalLikelihoodVariable = std::vector< T >
  
 * ``EcalBDTVariable``: one number for each BDT type.
 
@@ -128,7 +128,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	TofChargeVariable = std::map< Tof::ChargeType, T >
+      using TofChargeVariable = std::map< Tof::ChargeType, T >
  
 * ``TofBetaVariable``: one number for each Tof beta reconstruction type.
 
@@ -136,7 +136,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	TofBetaVariable = std::map< Tof::BetaType, T >
+      using TofBetaVariable = std::map< Tof::BetaType, T >
  
 * ``TofClusterTypeVariable``: one number for each Tof cluster type.
 
@@ -144,7 +144,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	TofClusterTypeVariable = std::map< Tof::BetaClusterType, T >
+      using TofClusterTypeVariable = std::map< Tof::BetaClusterType, T >
  
 * ``TrdChargeVariable``: one number for each TRD charge reconstruction type.
 
@@ -160,7 +160,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	TrdLikelihoodVariable = std::vector< T >
+      using TrdLikelihoodVariable = std::vector< T >
  
 * ``TrdLikelihoodRVariable``: one number for each TRD likelihood ratio type.
 
@@ -184,7 +184,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	TrackChargeVariable = std::map< TrTrack::ChargeRecoType, T >
+      using TrackChargeVariable = std::map< TrTrack::ChargeRecoType, T >
  
 * ``TrackFitVariable``: one number for each track fitting type, and for each track span type.
 
@@ -224,7 +224,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using 	TrackDistanceVariable = std::map< TrTrack::DistanceFromTrack, T >
+      using TrackDistanceVariable = std::map< TrTrack::DistanceFromTrack, T >
  
 * ``HitChargeVariable``: same as ``TrackChargeVariable``
  
