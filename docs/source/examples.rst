@@ -68,12 +68,9 @@ RDataFrame
 This example shows how to plot one histogram on NAIA events applying some simple selections, using the ``RDataFrame`` approach. 
 There are a few caveats when using this approach:
 
-* You don't use ``NAIAChain``, instead you have to create the ``RDataFrame`` object reading the original tree from file, 
-or creating a traditional ``TChain``. How this ties with the ``RTIInfo`` and ``FileInfo`` trees is to be investigated.
-* You have to work with the "Data" container classes, without the "read-on-demand" part. ``RDataFrame`` is supposed to take 
-care of the rest by itself.
-* You have to use the correct branch name in all the operations, which should be the same as the corresponding container 
-"Data" class.
+* You don't use ``NAIAChain``, instead you have to create the ``RDataFrame`` object reading the original tree from file, or creating a traditional ``TChain``. How this ties with the ``RTIInfo`` and ``FileInfo`` trees is to be investigated.
+* You have to work with the "Data" container classes, without the "read-on-demand" part. ``RDataFrame`` is supposed to take  care of the rest by itself.
+* You have to use the correct branch name in all the operations, which should be the same as the corresponding container "Data" class.
 
 Simple macro
 ------------
