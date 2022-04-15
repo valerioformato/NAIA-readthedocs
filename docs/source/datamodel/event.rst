@@ -4,44 +4,70 @@ The ``Event`` class
 The ``Event`` class is nothing more than a collection of containers
 
 .. list-table:: Event class layout
-   :widths: 50 50
+   :widths: 25 25 50
    :header-rows: 1
 
    * - Container type
      - Name
-   * - Header
+     - Description
+   * - `Header <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1HeaderData.html>`_
      - header
-   * - EventSummary
+     - 
+   * - `EventSummary <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1EventSummaryData.html>`_
      - evSummary
-   * - DAQ
+     - 
+   * - `DAQ <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1DAQData.html>`_
      - daq
-   * - TofBase
+     - 
+   * - `TofBase <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1TofBaseData.html>`_
      - tofBase
-   * - TofPlus
+     - 
+   * - `TofPlus <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1TofPlusData.html>`_
      - tofPlus
-   * - TofBaseStandalone
+     - 
+   * - `TofBaseStandalone <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1TofBaseData.html>`_
      - tofBaseSt
-   * - TofPlusStandalone
+     - 
+   * - `TofPlusStandalone <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1TofPlusData.html>`_
      - tofPlusSt
-   * - EcalBase
+     - 
+   * - `EcalBase <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1EcalBaseData.html>`_
      - ecalBase
-   * - EcalPlus
+     - 
+   * - `EcalPlus <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1EcalPlus.html>`_
      - ecalPlus
-   * - TrTrackBase
+     - 
+   * - `TrTrackBase <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1TrTrackBaseData.html>`_
      - trTrackBase
-   * - TrTrackPlus
+     - 
+   * - `TrTrackPlus <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1TrTrackPlus.html>`_
      - trTrackPlus
-   * - TrdKBase
+     - 
+   * - `TrdKBase <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1TrdKBase.html>`_
      - trdKBase
-   * - TrdKBaseStandalone
+     - 
+   * - `TrdKBaseStandalone <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1TrdKBase.html>`_
      - trdKBaseSt
-   * - RichBase
+     - 
+   * - `RichBase <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1RichBaseData.html>`_
      - richBase
-   * - RichPlus
+     - 
+   * - `RichPlus <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1RichPlusData.html>`_
      - richPlus
-   * - UnbExtHitBase
+     - 
+   * - `UnbExtHitBase <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1UnbExtHitBaseData.html>`_
      - extHitBase
-   * - MCTruthBase
+     - 
+   * - `MCTruthBase <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1MCTruthBaseData.html>`_
      - mcTruthBase
-   * - MCTruthPlus
+     - 
+   * - `MCTruthPlus <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1MCTruthPlusData.html>`_
      - mcTruthPlus
+     - 
+
+This class acts as an interface to group and access containers with information from the various subdetectors. 
+This should be provided by the chain class as a transient view of the event information.
+
+This class implements a data structure where all dataobjects are branches of a single tree. 
+However all read/write operations are handled by the single containers.
+
