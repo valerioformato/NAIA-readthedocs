@@ -95,7 +95,7 @@ in the ``Header`` container.
         NAIA::Category cat = NAIA::Category::Charge1_Trk | NAIA::Category::Charge1_Tof;
 
           for (NAIA::Event &event : chain) {
-            // check charge with TOF or Tracker
+            // check charge with TOF and Tracker
             if (!event.header->CheckMask(cat))
               continue;
 
