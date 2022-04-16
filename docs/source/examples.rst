@@ -13,10 +13,13 @@ CMake
     **This is the recommended way to go**
 
 To compile just run
-- ``mkdir build``
-- ``cd build``
-- ``cmake .. -DNAIA_DIR=/path/to/your/naia/install/cmake``
-- ``make``
+
+.. code-block:: bash
+
+    mkdir build
+    cd build
+    cmake .. -DNAIA_DIR=/path/to/your/naia/install/cmake
+    make
 
 If you take a look at the included ``CMakeLists.txt`` you'll notice that the only two lines needed to link against the NAIA libraries are:
 
