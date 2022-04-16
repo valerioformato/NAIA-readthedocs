@@ -48,7 +48,7 @@ The ``Event`` class is nothing more than a collection of containers
      - Contains basic TRD variables that are accessed most frequently
    * - `TrdKBaseStandalone <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1TrdKBase.html>`_
      - trdKBaseSt
-     - Contains additional TRD variables that are accessed less frequently
+     - Contains basic TRD variables that are accessed most frequently (no-tracker reconstruction)
    * - `RichBase <https://naia-docs.web.cern.ch/naia-docs/classNAIA_1_1RichBaseData.html>`_
      - richBase
      - Contains basic RICH variables that are accessed most frequently
