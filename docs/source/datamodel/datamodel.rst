@@ -63,6 +63,8 @@ data from file
 
         // Get the inner tracker charge from the "trTrackBase" container
         auto innerCharge = event.trTrackBase->Charge[NAIA::TrTrack::ChargeRecoType::YJ];
+        //                                  ^^
+        //                            this is very important :)
 
 Variable types and structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -74,7 +76,7 @@ write to disk non-existing data, variables in NAIA are often implemented as asso
 
 If that is the case, then there is always a ``enum`` describing all the available variants for a given variable.
 
-If you want to make sure that a given variant exists you can use the ``KeyExists`` function
+If you want to make sure that a given variant exists you can use the ``KeyExists`` `function <https://naia-docs.web.cern.ch/naia-docs/group__contvar.html#gadbb95738c905854cc9e90e40f4789072>`_
 
 .. code-block:: cpp
 
@@ -114,7 +116,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	EcalLikelihoodVariable = std::vector< T >
+      using EcalLikelihoodVariable = std::vector< T >
  
 * ``EcalBDTVariable``: one number for each BDT type.
 
@@ -138,7 +140,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	TofChargeVariable = std::map< Tof::ChargeType, T >
+      using TofChargeVariable = std::map< Tof::ChargeType, T >
  
 * ``TofBetaVariable``: one number for each Tof beta reconstruction type.
 
@@ -146,7 +148,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	TofBetaVariable = std::map< Tof::BetaType, T >
+      using TofBetaVariable = std::map< Tof::BetaType, T >
  
 * ``TofClusterTypeVariable``: one number for each Tof cluster type.
 
@@ -154,7 +156,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	TofClusterTypeVariable = std::map< Tof::BetaClusterType, T >
+      using TofClusterTypeVariable = std::map< Tof::BetaClusterType, T >
  
 * ``TrdChargeVariable``: one number for each TRD charge reconstruction type.
 
@@ -170,7 +172,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	TrdLikelihoodVariable = std::vector< T >
+      using TrdLikelihoodVariable = std::vector< T >
  
 * ``TrdLikelihoodRVariable``: one number for each TRD likelihood ratio type.
 
@@ -194,7 +196,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using	TrackChargeVariable = std::map< TrTrack::ChargeRecoType, T >
+      using TrackChargeVariable = std::map< TrTrack::ChargeRecoType, T >
  
 * ``TrackFitVariable``: one number for each track fitting type, and for each track span type.
 
@@ -234,7 +236,7 @@ variant is available. The archetypes in the NAIA data model are:
   * .. code-block:: cpp
 
       template<class T>
-      using 	TrackDistanceVariable = std::map< TrTrack::DistanceFromTrack, T >
+      using TrackDistanceVariable = std::map< TrTrack::DistanceFromTrack, T >
  
 * ``HitChargeVariable``: same as ``TrackChargeVariable``
  

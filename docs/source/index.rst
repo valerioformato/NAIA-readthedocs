@@ -13,6 +13,9 @@ Take a look at:
 * :doc:`build-install`
 * :doc:`datamodel/datamodel`
 * :doc:`datamodel/event`
+* :doc:`datamodel/skimming`
+* :doc:`examples`
+
 
 .. toctree::
    :maxdepth: 2
@@ -22,5 +25,6 @@ Take a look at:
    /build-install
    /datamodel/datamodel
    /datamodel/event
-
+   /datamodel/skimming
+   /examples
 
