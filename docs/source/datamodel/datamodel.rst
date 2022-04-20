@@ -99,16 +99,12 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using EcalEnergyVariable = std::vector< T >
-  * .. note::
+  * Example:
 
-      Example:
+    .. code-block:: cpp
 
-      .. code-block:: cpp
-
-        if (NAIA::KeyExists(NAIA::Ecal::EnergyType::EnergyD, event.ecalBase->Energy))
-          ecalEneD = event.ecalBase->Energy[NAIA::Ecal::EnergyType::EnergyD];
-
-
+      if (NAIA::KeyExists(NAIA::Ecal::EnergyType::EnergyD, event.ecalBase->Energy))
+        ecalEneD = event.ecalBase->Energy[NAIA::Ecal::EnergyType::EnergyD];
 
 * ``EcalLikelihoodVariable``: one number for each likelihood type.
 
@@ -117,6 +113,12 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using EcalLikelihoodVariable = std::vector< T >
+  * Example:
+
+    .. code-block:: cpp
+
+      if (NAIA::KeyExists(NAIA::Ecal::Likelihood::Integral, event.ecalPlus->Likelihood))
+        ecalLikelihood = event.ecalPlus->Likelihood[NAIA::Ecal::Likelihood::Integral];
  
 * ``EcalBDTVariable``: one number for each BDT type.
 
@@ -125,6 +127,12 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using EcalBDTVariable = std::vector< T >
+  * Example:
+
+    .. code-block:: cpp
+
+      if (NAIA::KeyExists(NAIA::Ecal::BDTType::v7std, event.ecalBase->BDT))
+        bdt = event.ecalBase->BDT[NAIA::Ecal::BDTType::v7std];
  
 * ``RichBetaVariable``: one number for each RICH beta reconstruction type.
 
@@ -133,6 +141,12 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using RichBetaVariable = std::map< Rich::BetaType, T >
+  * Example:
+
+    .. code-block:: cpp
+
+      if (NAIA::KeyExists(NAIA::Rich::BetaType::CIEMAT, event.richBase->GetBeta()))
+        rich_beta = event.richBase->GetBeta()[NAIA::Rich::BetaType::CIEMAT];
  
 * ``TofChargeVariable``: one number for each kind of Tof charge.
 
@@ -141,7 +155,13 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TofChargeVariable = std::map< Tof::ChargeType, T >
- 
+   * Example:
+
+    .. code-block:: cpp
+
+      if (NAIA::KeyExists(NAIA::Tof::ChargeType::Upper, event.tofBase->Charge))
+        tof_charge = event.tofBase->Charge[NAIA::Tof::ChargeType::Upper];
+
 * ``TofBetaVariable``: one number for each Tof beta reconstruction type.
 
   * Uses the ``Tof::BetaType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1Tof.html>`_ for access
@@ -149,6 +169,12 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TofBetaVariable = std::map< Tof::BetaType, T >
+   * Example:
+
+    .. code-block:: cpp
+
+      if (NAIA::KeyExists(NAIA::Tof::BetaType::BetaH, event.tofBase->Beta))
+        tof_beta = event.tofBase->Beta[NAIA::Tof::BetaType::BetaH];
  
 * ``TofClusterTypeVariable``: one number for each Tof cluster type.
 
@@ -157,6 +183,13 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TofClusterTypeVariable = std::map< Tof::BetaClusterType, T >
+   * Example:
+
+    .. code-block:: cpp
+
+      unsigned int layer = 0;
+      if (NAIA::KeyExists(NAIA::Tof::BetaClusterType::OnTime, event.tofPlus->Nclusters))
+        ontime_clusters = event.tofPlus->NClusters[NAIA::Tof::BetaClusterType::OnTime];
  
 * ``TrdChargeVariable``: one number for each TRD charge reconstruction type.
 
@@ -165,6 +198,13 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TrdChargeVariable = std::vector< T >
+   * Example:
+
+    .. code-block:: cpp
+
+      unsigned int layer = 0;
+      if (NAIA::KeyExists(NAIA::TrdK::ChargeType::Total, event.trdBase->Charge))
+        trd_charge = event.trdBase->Charge[NAIA::TrdK::ChargeType::Total];
  
 * ``TrdLikelihoodVariable``: one number for each TRD likelihood type.
 
