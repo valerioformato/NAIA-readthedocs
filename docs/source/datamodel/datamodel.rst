@@ -81,7 +81,7 @@ If you want to make sure that a given variant exists you can use the ``KeyExists
 .. code-block:: cpp
 
   if (NAIA::KeyExists(NAIA::Tof::ChargeType::Upper, event.tofBase->Charge))
-    tofCharge = event.tofBase->Charge[NAIA::Tof::ChargeType::Upper];
+    tof_charge = event.tofBase->Charge[NAIA::Tof::ChargeType::Upper];
 
 because it is not guaranteed that, for example, a particular reconstruction succeeded, or that there is a hit on a given layer.
 
@@ -104,7 +104,7 @@ variant is available. The archetypes in the NAIA data model are:
     .. code-block:: cpp
 
       if (NAIA::KeyExists(NAIA::Ecal::EnergyType::EnergyD, event.ecalBase->Energy))
-        ecalEneD = event.ecalBase->Energy[NAIA::Ecal::EnergyType::EnergyD];
+        ecal_energy_D = event.ecalBase->Energy[NAIA::Ecal::EnergyType::EnergyD];
 
 * ``EcalLikelihoodVariable``: one number for each likelihood type.
 
@@ -118,7 +118,7 @@ variant is available. The archetypes in the NAIA data model are:
     .. code-block:: cpp
 
       if (NAIA::KeyExists(NAIA::Ecal::Likelihood::Integral, event.ecalPlus->Likelihood))
-        ecalLikelihood = event.ecalPlus->Likelihood[NAIA::Ecal::Likelihood::Integral];
+        ecal_likelihood = event.ecalPlus->Likelihood[NAIA::Ecal::Likelihood::Integral];
  
 * ``EcalBDTVariable``: one number for each BDT type.
 
@@ -155,7 +155,7 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TofChargeVariable = std::map< Tof::ChargeType, T >
-   * Example:
+  * Example:
 
     .. code-block:: cpp
 
@@ -169,7 +169,7 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TofBetaVariable = std::map< Tof::BetaType, T >
-   * Example:
+  * Example:
 
     .. code-block:: cpp
 
@@ -183,13 +183,13 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TofClusterTypeVariable = std::map< Tof::BetaClusterType, T >
-   * Example:
+  * Example:
 
     .. code-block:: cpp
 
       unsigned int layer = 0;
-      if (NAIA::KeyExists(NAIA::Tof::BetaClusterType::OnTime, event.tofPlus->Nclusters))
-        ontime_clusters = event.tofPlus->NClusters[NAIA::Tof::BetaClusterType::OnTime];
+      if (NAIA::KeyExists(NAIA::Tof::BetaClusterType::OnTime, event.tofPlus->Nclusters[layer]))
+        ontime_clusters = event.tofPlus->NClusters[layer][NAIA::Tof::BetaClusterType::OnTime];
  
 * ``TrdChargeVariable``: one number for each TRD charge reconstruction type.
 
@@ -198,13 +198,12 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TrdChargeVariable = std::vector< T >
-   * Example:
+  * Example:
 
     .. code-block:: cpp
 
-      unsigned int layer = 0;
-      if (NAIA::KeyExists(NAIA::TrdK::ChargeType::Total, event.trdBase->Charge))
-        trd_charge = event.trdBase->Charge[NAIA::TrdK::ChargeType::Total];
+      if (NAIA::KeyExists(NAIA::TrdK::ChargeType::Total, event.trdKBase->Charge))
+        trd_charge = event.trdKBase->Charge[NAIA::TrdK::ChargeType::Total];
  
 * ``TrdLikelihoodVariable``: one number for each TRD likelihood type.
 
@@ -213,6 +212,12 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TrdLikelihoodVariable = std::vector< T >
+  * Example:
+
+    .. code-block:: cpp
+
+      if (NAIA::KeyExists(NAIA::TrdK::LikelihoodType::Electron, event.trdKBase->Likelihood))
+        trd_like_e = event.trdKBase->Likelihood[NAIA::TrdK::LikelihoodType::Electron];
  
 * ``TrdLikelihoodRVariable``: one number for each TRD likelihood ratio type.
 
@@ -221,6 +226,12 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TrdLikelihoodRVariable = std::vector< T >
+  * Example:
+
+    .. code-block:: cpp
+
+      if (NAIA::KeyExists(NAIA::TrdK::LikelihoodRType::ep, event.trdKBase->LikelihoodRatio))
+        trd_likeratio_ep = event.trdKBase->LikelihoodRatio[NAIA::TrdK::LikelihoodRType::ep];
  
 * ``TrdOnTrackVariable``: one number for on-track / off-track TRD hits.
 
@@ -229,6 +240,12 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TrdOnTrackVariable = std::vector< T >
+   * Example:
+
+    .. code-block:: cpp
+
+      if (NAIA::KeyExists(NAIA::TrdK::QualType::OffTrack, event.trdKBase->NHits))
+        offtrack_hits = event.trdKBase->NHits[NAIA::TrdK::QualType::OffTrack];
  
 * ``TrackChargeVariable``: one number for each Tracker charge reconstruction type.
 
@@ -237,6 +254,12 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TrackChargeVariable = std::map< TrTrack::ChargeRecoType, T >
+  * Example:
+
+    .. code-block:: cpp
+
+      if (NAIA::KeyExists(NAIA::TrTrack::ChargeRecoType::YJ, event.trTrackBase->Charge))
+        trtrack_charge_inner = event.trtrackBase->InnerCharge[NAIA::TrTrack::ChargeRecoType::YJ];
  
 * ``TrackFitVariable``: one number for each track fitting type, and for each track span type.
 
@@ -245,6 +268,16 @@ variant is available. The archetypes in the NAIA data model are:
 
        template<class T>
        using TrackFitVariable = std::map< TrTrack::Fit, std::map< TrTrack::Span, T >>
+  * .. note::
+
+      For this kind of variable you can use ``TrTrackBase::FitIDEsists(TrTrack::Fit fit, TrTrack::Span span)`` to check if a given fit+span combination exists
+
+  * Example:
+
+    .. code-block:: cpp
+
+      if (event.trTrackBase->FitIDExists(NAIA::TrTrack::Fit::Kalman, NAIA::TrTrack::Span::InnerL1))
+        trtrack_rigidity_innerL1 = event.trtrackBase->RigidityCorr[NAIA::TrTrack::Fit::Kalman][NAIA::TrTrack::Span::InnerL1];
  
 * ``TrackFitOnlyVariable``: one number for each Track fit type.
 
@@ -253,6 +286,13 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TrackFitOnlyVariable = std::map< TrTrack::Fit, T >
+  * Example:
+
+    .. code-block:: cpp
+
+      unsigned int layer = 1; // exclude layer 2
+      if (NAIA::KeyExists(NAIA::TrTrack::Fit::Choutko, event.trTrackPlus->PartialRigidity[layer]))
+        ontime_clusters = event.trTrackPlus->PartialRigidity[layer][NAIA::TrTrack::Fit::Choutko];
  
 * ``TrackFitPosVariable``: one number for each fixed z-position in the Tracker.
 
@@ -261,7 +301,19 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using TrackFitPosVariable = std::map< TrTrack::FitPositionHeight, T >
- 
+  * Example:
+
+    .. code-block:: cpp
+
+      auto fit = NAIA::TrTrack::Fit::Kalman;
+      auto span = NAIA::TrTrack::Span::InnerL1;
+
+      if (NAIA::KeyExists(NAIA::FitPositionHeight::TofLayer0, event.trtrackPlus->TrTrackFitPos)){
+        if (event.trTrackBase->FitIDExists(fit, span)){
+          trtrack_position_at_upper_tof = event.trtrackPlus->TrTrackFitPos[NAIA::FitPositionHeight::TofLayer0][fit][span];
+        }
+      }
+
 * ``TrackSideVariable``: one number for each Tracker side.
 
   * Uses the ``TrTrack::Side`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1TrTrack.html>`_ for access
