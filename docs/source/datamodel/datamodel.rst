@@ -76,7 +76,7 @@ write to disk non-existing data, variables in NAIA are often implemented as asso
 
 If that is the case, then there is always a ``enum`` describing all the available variants for a given variable.
 
-If you want to make sure that a given variant exists you can use the ``KeyExists`` `function <https://naia-docs.web.cern.ch/naia-docs/group__contvar.html#gadbb95738c905854cc9e90e40f4789072>`_
+If you want to make sure that a given variant exists you can use the ``KeyExists`` `function <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/group__contvar.html#gadbb95738c905854cc9e90e40f4789072>`_
 
 .. code-block:: cpp
 
@@ -91,10 +91,25 @@ because it is not guaranteed that, for example, a particular reconstruction succ
 
 In NAIA there are several variable archetype defined, so that it is clear which ``enum`` to use and what kind of variable 
 variant is available. The archetypes in the NAIA data model are:
+ 
+* ``LayerVariable``: one number for each layer (applies to Tracker, Tof, TRD, ...).
+
+  * Uses the layer number ``(0, ..., N-1)`` for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using LayerVariable = std::map< unsigned int, T >
+  * Example:
+
+    .. code-block:: cpp
+
+      unsigned int layer = 4; // layer 5
+      if (NAIA::KeyExists(layer, event.trTrackPlus->TrackFeetDistance))
+        track_distance_to_feet_l5 = event.trTrackPlus->TrackFeetDistance[layer];
 
 * ``EcalEnergyVariable``: one number for each energy reconstruction type.
 
-  * Uses the ``Ecal::EnergyRecoType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1Ecal.html>`_ for access
+  * Uses the ``Ecal::EnergyRecoType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1Ecal.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -108,7 +123,7 @@ variant is available. The archetypes in the NAIA data model are:
 
 * ``EcalLikelihoodVariable``: one number for each likelihood type.
 
-  * Uses the ``Ecal::LikelihoodType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1Ecal.html>`_ for access
+  * Uses the ``Ecal::LikelihoodType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1Ecal.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -122,7 +137,7 @@ variant is available. The archetypes in the NAIA data model are:
  
 * ``EcalBDTVariable``: one number for each BDT type.
 
-  * Uses the ``Ecal::BDTType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1Ecal.html>`_ for access
+  * Uses the ``Ecal::BDTType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1Ecal.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -136,7 +151,7 @@ variant is available. The archetypes in the NAIA data model are:
  
 * ``RichBetaVariable``: one number for each RICH beta reconstruction type.
 
-  * Uses the ``Rich::BetaType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1Rich.html>`_ for access
+  * Uses the ``Rich::BetaType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1Rich.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -150,7 +165,7 @@ variant is available. The archetypes in the NAIA data model are:
  
 * ``TofChargeVariable``: one number for each kind of Tof charge.
 
-  * Uses the ``Tof::ChargeType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1Tof.html>`_ for access
+  * Uses the ``Tof::ChargeType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1Tof.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -164,7 +179,7 @@ variant is available. The archetypes in the NAIA data model are:
 
 * ``TofBetaVariable``: one number for each Tof beta reconstruction type.
 
-  * Uses the ``Tof::BetaType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1Tof.html>`_ for access
+  * Uses the ``Tof::BetaType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1Tof.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -178,7 +193,7 @@ variant is available. The archetypes in the NAIA data model are:
  
 * ``TofClusterTypeVariable``: one number for each Tof cluster type.
 
-  * Uses the ``Tof::BetaClusterType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1Tof.html>`_ for access
+  * Uses the ``Tof::BetaClusterType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1Tof.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -193,7 +208,7 @@ variant is available. The archetypes in the NAIA data model are:
  
 * ``TrdChargeVariable``: one number for each TRD charge reconstruction type.
 
-  * Uses the ``TrdK::ChargeType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1TrdK.html>`_ for access
+  * Uses the ``TrdK::ChargeType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1TrdK.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -207,7 +222,7 @@ variant is available. The archetypes in the NAIA data model are:
  
 * ``TrdLikelihoodVariable``: one number for each TRD likelihood type.
 
-  * Uses the ``TrdK::LikelihoodType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1TrdK.html>`_ for access
+  * Uses the ``TrdK::LikelihoodType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1TrdK.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -221,7 +236,7 @@ variant is available. The archetypes in the NAIA data model are:
  
 * ``TrdLikelihoodRVariable``: one number for each TRD likelihood ratio type.
 
-  * Uses the ``TrdK::LikelihoodRType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1TrdK.html>`_ for access
+  * Uses the ``TrdK::LikelihoodRType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1TrdK.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -235,12 +250,12 @@ variant is available. The archetypes in the NAIA data model are:
  
 * ``TrdOnTrackVariable``: one number for on-track / off-track TRD hits.
 
-  * Uses the ``TrdK::QualType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1TrdK.html>`_ for access
+  * Uses the ``TrdK::QualType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1TrdK.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
       using TrdOnTrackVariable = std::vector< T >
-   * Example:
+  * Example:
 
     .. code-block:: cpp
 
@@ -249,7 +264,7 @@ variant is available. The archetypes in the NAIA data model are:
  
 * ``TrackChargeVariable``: one number for each Tracker charge reconstruction type.
 
-  * Uses the ``TrTrack::ChargeRecoType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1TrTrack.html>`_ for access
+  * Uses the ``TrTrack::ChargeRecoType`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1TrTrack.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -263,7 +278,7 @@ variant is available. The archetypes in the NAIA data model are:
  
 * ``TrackFitVariable``: one number for each track fitting type, and for each track span type.
 
-  * Uses the ``TrTrack::Fit`` and ``TrTrack::Span`` `enums <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1TrTrack.html>`_ for access
+  * Uses the ``TrTrack::Fit`` and ``TrTrack::Span`` `enums <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1TrTrack.html>`_ for access
   * .. code-block:: cpp
 
        template<class T>
@@ -281,7 +296,7 @@ variant is available. The archetypes in the NAIA data model are:
  
 * ``TrackFitOnlyVariable``: one number for each Track fit type.
 
-  * Uses the ``TrTrack::Fit`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1TrTrack.html>`_ for access
+  * Uses the ``TrTrack::Fit`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1TrTrack.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -294,9 +309,23 @@ variant is available. The archetypes in the NAIA data model are:
       if (NAIA::KeyExists(NAIA::TrTrack::Fit::Choutko, event.trTrackPlus->PartialRigidity[layer]))
         ontime_clusters = event.trTrackPlus->PartialRigidity[layer][NAIA::TrTrack::Fit::Choutko];
  
+* ``TrackSideVariable``: one number for each Tracker side.
+
+  * Uses the ``TrTrack::Side`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1TrTrack.html>`_ for access
+  * .. code-block:: cpp
+
+      template<class T>
+      using TrackSideVariable = std::map< TrTrack::Side, T >
+  * Example:
+
+    .. code-block:: cpp
+
+      if (NAIA::KeyExists(NAIA::TrTrack::Side::X, event.trTrackPlus->TrTrackHitPos[layer]))
+        ontime_clusters = event.trTrackPlus->TrTrackHitPos[layer][NAIA::TrTrack::Side::X];
+ 
 * ``TrackFitPosVariable``: one number for each fixed z-position in the Tracker.
 
-  * Uses the ``TrTrack::FitPositionHeight`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1TrTrack.html>`_ for access
+  * Uses the ``TrTrack::FitPositionHeight`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1TrTrack.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
@@ -310,34 +339,25 @@ variant is available. The archetypes in the NAIA data model are:
 
       if (NAIA::KeyExists(NAIA::FitPositionHeight::TofLayer0, event.trtrackPlus->TrTrackFitPos)){
         if (event.trTrackBase->FitIDExists(fit, span)){
-          trtrack_position_at_upper_tof = event.trtrackPlus->TrTrackFitPos[NAIA::FitPositionHeight::TofLayer0][fit][span];
+          trtrack_position_at_upper_tof_x = event.trtrackPlus->TrTrackFitPos[NAIA::FitPositionHeight::TofLayer0][fit][span][NAIA::TrTrack::Side::X];
         }
       }
 
-* ``TrackSideVariable``: one number for each Tracker side.
-
-  * Uses the ``TrTrack::Side`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1TrTrack.html>`_ for access
-  * .. code-block:: cpp
-
-      template<class T>
-      using TrackSideVariable = std::map< TrTrack::Side, T >
- 
 * ``TrackDistanceVariable``: one number for each distance-from-the-track type.
 
-  * Uses the ``TrTrack::DistanceFromTrack`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1TrTrack.html>`_ for access
+  * Uses the ``TrTrack::DistanceFromTrack`` `enum <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/namespaceNAIA_1_1TrTrack.html>`_ for access
   * .. code-block:: cpp
 
       template<class T>
       using TrackDistanceVariable = std::map< TrTrack::DistanceFromTrack, T >
- 
+  * Example:
+
+    .. code-block:: cpp
+
+      unsigned int layer = 1; // layer 2
+      if (NAIA::KeyExists(NAIA::TrTrack::DistanceFromTrack::Onecm, event.trTrackPlus->NClusters[layer]))
+        track_clusters_within_onecm_x = event.trTrackPlus->NClusters[layer][NAIA::TrTrack::DistanceFromTrack::Onecm][TrTrack::Side::X]; 
+
 * ``HitChargeVariable``: same as ``TrackChargeVariable``
- 
-* ``LayerVariable``: one number for each layer (applies to Tracker, Tof, TRD, ...).
 
-  * Uses the layer number ``(0, ..., N-1)`` for access
-  * .. code-block:: cpp
-
-      template<class T>
-      using LayerVariable = std::map< unsigned int, T >
-
-Please refer to the `doxygen documentation <https://naia-docs.web.cern.ch/naia-docs/annotated.html>`_ for all the details.
+Please refer to the `doxygen documentation <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/annotated.html>`_ for all the details.
