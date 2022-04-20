@@ -97,7 +97,17 @@ variant is available. The archetypes in the NAIA data model are:
 
       template<class T>
       using EcalEnergyVariable = std::vector< T >
- 
+  * .. note::
+
+      Example:
+
+      .. code-block:: cpp
+
+        if (NAIA::KeyExists(NAIA::Ecal::EnergyType::EnergyD, event.ecalBase->Energy))
+          ecalEneD = event.ecalBase->Energy[NAIA::Ecal::EnergyType::EnergyD];
+
+
+
 * ``EcalLikelihoodVariable``: one number for each likelihood type.
 
   * Uses the ``Ecal::LikelihoodType`` `enum <https://naia-docs.web.cern.ch/naia-docs/namespaceNAIA_1_1Ecal.html>`_ for access
