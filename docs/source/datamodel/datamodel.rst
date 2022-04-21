@@ -40,6 +40,80 @@ If you're uncomfortable with `range-based for loops <https://en.cppreference.com
       // your analysis here :)
     }
 
+NAIA root-files contain two more ``TTree``s with additional data for the analysis. 
+
+The ``RTIInfo`` tree
+^^^^^^^^^^^^^^^^^^^^
+
+The data about the ISS position, its orientation, and physical quantities connected to them, as well as some time-averaged data about the run 
+itself are usually retrieved in AMS analysis from the RTI (Real Time Information) database. This database stores data with a time granularity 
+of one second, and it can be accessed using the gbatch library.
+
+Since we try to get rid of any dependency on gbatch during the analysis the entire RTI database is converted to a ``TTree`` that is stored 
+alongside the main event ``TTree`` in the NAIA root-files. This tree has only one branch, which contains objects of the ``RTIInfo`` 
+`class <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/classNAIA_1_1RTIInfo.html>`_, one for each second of the current run.
+
+When looping over the events you can get the ``RTIInfo`` object for the current event by calling
+
+.. code-block:: cpp
+
+  NAIA::RTIInfo &rti_info = chain.GetEventRTIInfo();
+
+In some cases you might not want to loop over all the events, but still perform analysis on the RTI data standalone. In such cases you can
+directly retrieve the RTI tree from the NAIA file and loop over each second.
+
+.. code-block:: cpp
+
+  TChain* rti_chain = chain.GetRTITree();
+  NAIA::RTIInfo* rti_info = new RTIInfo();
+  rti_chain->SetBranchAddress("RTIInfo", &rti_info);
+
+  for(unsigned long long isec=0; isec < rti_chain->GetEntries(); ++isec){
+    rti_chain->GetEntry(isec);
+    
+    // your analysis here :)
+  }
+
+The ``FileInfo`` tree
+^^^^^^^^^^^^^^^^^^^^
+
+In a similar fashion we also store some useful information about the original AMSRoot file that from which the current NAIA file was derived.
+This information is stored in the FileInfo ``TTree``, which usually has only a single entry for each NAIA root-file. Having this data in a 
+``TTree`` allows us to chain multiple NAIA root-files and still be able to retrieve the FileInfo data for the current run we're processing.
+
+This tree has one branch, which contains objects of the ``FileInfo`` `class <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/classNAIA_1_1FileInfo.html>`_ 
+and, if the NAIA root-file is a Montecarlo file, an additional branch containing objects of the 
+``MCFileInfo`` `class <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/classNAIA_1_1MCFileInfo.html>`_.
+
+When looping over the events you can get the ``FileInfo`` object for the current event by calling
+
+.. code-block:: cpp
+
+  NAIA::FileInfo &file_info = chain.GetEventFileInfo();
+
+Also in this case you can directly retrieve the FileInfo tree from the NAIA file and loop over each entry.
+
+.. code-block:: cpp
+
+  TChain* file_chain = chain.GetFileInfoTree();
+  NAIA::FileInfo* file_info = new NAIA::FileInfo();
+  NAIA::MCFileInfo* mcfile_info = new NAIA::MCFileInfo();
+
+  file_chain->SetBranchAddress("FileInfo", &file_info);
+  if(chain.IsMC()){
+    file_chain->SetBranchAddress("MCFileInfo", &mcfile_info);
+  }
+
+  for(unsigned long long i=0; i < file_chain->GetEntries(); ++i){
+    file_chain->GetEntry(i);
+
+    // do stuff with file_info
+
+    if(chain.IsMC()){
+      // do stuff with mcfile_info
+    }
+  }
+  
 Containers
 ----------
 
