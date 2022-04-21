@@ -78,6 +78,17 @@ and you should be good to go.
 Alternatively you can set up your own makefile and do all the work manually. For this see the examples provided in the 
 NAIA repository. 
 
+.. note:: 
+
+  If you are using a pre-installed NAIA distribution (e.g. from cvmfs) you might have to export the ``ROOT_INCLUDE_PATH`` variable to 
+  include the path of the NAIA headers.
+
+  .. code-block:: bash
+
+    export ROOT_INCLUDE_PATH=${path-to-the-NAIA-install}/include:$ROOT_INCLUDE_PATH
+
+  This is due to ROOT needing to parse the headers at runtime. (`see for example <https://root-forum.cern.ch/t/problem-with-dictionaries-in-root6/27244/7>`_)
+
 Included facilities
 -------------------
 

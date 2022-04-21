@@ -40,7 +40,7 @@ If you're uncomfortable with `range-based for loops <https://en.cppreference.com
       // your analysis here :)
     }
 
-NAIA root-files contain two more ``TTree``s with additional data for the analysis. 
+NAIA root-files contain two more ``TTree`` with additional data for the analysis. 
 
 The ``RTIInfo`` tree
 ^^^^^^^^^^^^^^^^^^^^
