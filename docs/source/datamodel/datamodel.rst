@@ -153,6 +153,20 @@ If that is the case, then there is always a ``enum`` describing all the availabl
 If you want to make sure that a given variant exists you can use the ``ContainsKeys`` `function <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/group__contvar.html#gadbb95738c905854cc9e90e40f4789072>`_.
 This function takes a container and one or more keys and will check recursively that those keys exist in the container structure.
 
+As an example, what before would have been achieved with
+
+.. code-block:: cpp
+
+  if (KeyExists(layer, LayerCharge) && KeyExists(NAIA::Track::ChargeRecoType::YJ, LayerCharge.at(layer)) &&
+    KeyExists(TrTrack::Side::X, LayerCharge.at(layer).at(NAIA::Track::ChargeRecoType::YJ)))
+
+is now done by
+
+.. code-block:: cpp
+
+  if (ContainsKeys(LayerCharge, layer, NAIA::Track::ChargeRecoType::YJ, TrTrack::Side::X))
+
+
 .. note:: 
   
   The ``KeyExists`` function is completely replaced by ``ContainsKeys``. It is still available for backward-compatibility but it is now deprecated
