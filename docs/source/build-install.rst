@@ -5,9 +5,9 @@ Requirements
 ------------
 To use NAIA you'll need:
 
-* A C++ compiler with full c++14 support (tested with gcc >= 7.3.0)
+* A C++ compiler with full c++14 support (tested with gcc >= 9.3.0)
 * CMake version >= 3.13
-* A ROOT installation compiled with c++14 support (tested with ROOT >= 6.18/04)
+* A ROOT installation compiled with c++14 support (tested with ROOT >= 6.22/08)
 
 If you have access to cvmfs then you can find all the requirements in::
 
