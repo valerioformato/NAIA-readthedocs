@@ -35,9 +35,9 @@ Follow this simple procedure:
 
 * Clone this repository
 
-  * ``git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git`` (Kerberos)
-  * ``git clone ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git`` (SSH) 
-  * ``git clone https://gitlab.cern.ch/ams-italy/naia.git`` (HTTPS) 
+  * ``git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git -b v0.1.1`` (Kerberos)
+  * ``git clone ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git -b v0.1.1`` (SSH) 
+  * ``git clone https://gitlab.cern.ch/ams-italy/naia.git -b v0.1.1`` (HTTPS) 
 
 * Create a build and install directory
 
@@ -46,7 +46,7 @@ Follow this simple procedure:
 * Build the project
 
   * ``cd naia.build`` 
-  * ``cmake ../naia`` (for ntuple production add the ``-DPRODUCTION_CODE=ON`` arg)
+  * ``cmake ../naia -DCMAKE_INSTALL_PREFIX=${your-install-path-here}`` (for ntuple production add the ``-DPRODUCTION_CODE=ON`` arg)
   * ``make all install``
 
 
