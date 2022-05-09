@@ -153,6 +153,18 @@ If that is the case, then there is always a ``enum`` describing all the availabl
 If you want to make sure that a given variant exists you can use the ``ContainsKeys`` `function <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/group__contvar.html#gadbb95738c905854cc9e90e40f4789072>`_.
 This function takes a container and one or more keys and will check recursively that those keys exist in the container structure.
 
+.. code-block:: cpp
+
+  if (NAIA::ContainsKeys(event.tofBase->Charge, NAIA::Tof::ChargeType::Upper))
+    tof_charge = event.tofBase->Charge[NAIA::Tof::ChargeType::Upper];
+
+because it is not guaranteed that, for example, a particular reconstruction succeeded, or that there is a hit on a given layer.
+
+.. note:: 
+  
+  The ``KeyExists`` function is completely replaced by ``ContainsKeys``. It is still available for backward-compatibility but it is now deprecated
+  and will be removed in a future release. A warning message will be printed (at most 10 times), advising to switch to ``ContainsKeys``.
+
 As an example, what before would have been achieved with
 
 .. code-block:: cpp
@@ -167,19 +179,8 @@ is now done by
   if (ContainsKeys(LayerCharge, layer, NAIA::Track::ChargeRecoType::YJ, TrTrack::Side::X))
 
 
-.. note:: 
-  
-  The ``KeyExists`` function is completely replaced by ``ContainsKeys``. It is still available for backward-compatibility but it is now deprecated
-  and will be removed in a future release. A warning message will be printed (at most 10 times), advising to switch to ``ContainsKeys``.
-
-.. code-block:: cpp
-
-  if (NAIA::ContainsKeys(event.tofBase->Charge, NAIA::Tof::ChargeType::Upper))
-    tof_charge = event.tofBase->Charge[NAIA::Tof::ChargeType::Upper];
-
-because it is not guaranteed that, for example, a particular reconstruction succeeded, or that there is a hit on a given layer.
-
 .. note::
+
   Not all variables are stored in associative containers, when we know that all possible variants of a variable will be present
   we use a ``std::vector`` instead.
 
