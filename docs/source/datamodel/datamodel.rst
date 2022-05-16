@@ -85,11 +85,12 @@ This tree has one branch, which contains objects of the ``FileInfo`` `class <htt
 and, if the NAIA root-file is a Montecarlo file, an additional branch containing objects of the 
 ``MCFileInfo`` `class <https://naia-docs.web.cern.ch/naia-docs/v0.1.0/classNAIA_1_1MCFileInfo.html>`_.
 
-When looping over the events you can get the ``FileInfo`` object for the current event by calling
+When looping over the events you can get both objects for the current event by calling
 
 .. code-block:: cpp
 
   NAIA::FileInfo &file_info = chain.GetEventFileInfo();
+  NAIA::MCFileInfo &mcfile_info = chain.GetEventMCFileInfo();
 
 Also in this case you can directly retrieve the FileInfo tree from the NAIA file and loop over each entry.
 
