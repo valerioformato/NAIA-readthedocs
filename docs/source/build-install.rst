@@ -15,7 +15,7 @@ If you have access to cvmfs then you can find all the requirements in::
 
 and a ``setenv`` script is already provided with each NAIA version, e.g. for CentOS7::
 
-  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc9.3/naia/v0.1.0/setenvs/setenv_gcc6.22_cc7.sh
+  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc9.3/naia/v0.1.2/setenvs/setenv_gcc6.22_cc7.sh
 
 .. note::
 
