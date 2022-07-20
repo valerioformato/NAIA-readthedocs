@@ -7,7 +7,7 @@ To use NAIA you'll need:
 
 * A C++ compiler with full c++14 support (tested with gcc >= 9.3.0)
 * CMake version >= 3.13
-* A ROOT installation compiled with c++14 support (tested with ROOT >= 6.22/08)
+* A ROOT installation compiled with c++14 support (tested with ROOT >= 6.22/08, recommended 6.26/02)
 
 If you have access to cvmfs then you can find all the requirements in::
 
@@ -15,7 +15,7 @@ If you have access to cvmfs then you can find all the requirements in::
 
 and a ``setenv`` script is already provided with each NAIA version, e.g. for CentOS7::
 
-  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc9.3/naia/v0.1.3/setenvs/setenv_gcc6.22_cc7.sh
+  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc9.3/naia/v1.0.0/setenvs/setenv_gcc6.22_cc7.sh
 
 .. note::
 
@@ -35,9 +35,9 @@ Follow this simple procedure:
 
 * Clone this repository
 
-  * ``git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git -b v0.1.3`` (Kerberos)
-  * ``git clone ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git -b v0.1.3`` (SSH) 
-  * ``git clone https://gitlab.cern.ch/ams-italy/naia.git -b v0.1.3`` (HTTPS) 
+  * ``git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git -b v1.0.0`` (Kerberos)
+  * ``git clone ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git -b v1.0.0`` (SSH) 
+  * ``git clone https://gitlab.cern.ch/ams-italy/naia.git -b v1.0.0`` (HTTPS) 
 
 * Create a build and install directory
 
@@ -92,7 +92,7 @@ NAIA repository.
 Included facilities
 -------------------
 
-These two libraries are automatically build with the project and included in the installation so that they could be used out-of-the-box
+These two libraries are automatically built with the project and included in the installation so that they could be used out-of-the-box
 
 fmt
 ^^^
