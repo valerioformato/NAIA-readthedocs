@@ -15,7 +15,7 @@ If you have access to cvmfs then you can find all the requirements in::
 
 and a ``setenv`` script is already provided with each NAIA version, e.g. for CentOS7::
 
-  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc9.3/naia/v1.0.0/setenvs/setenv_gcc6.22_cc7.sh
+  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc9.3/naia/v1.0.1/setenvs/setenv_gcc6.26_cc7.sh
 
 .. note::
 
@@ -35,9 +35,9 @@ Follow this simple procedure:
 
 * Clone this repository
 
-  * ``git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git -b v1.0.0`` (Kerberos)
-  * ``git clone ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git -b v1.0.0`` (SSH) 
-  * ``git clone https://gitlab.cern.ch/ams-italy/naia.git -b v1.0.0`` (HTTPS) 
+  * ``git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git -b v1.0.1`` (Kerberos)
+  * ``git clone ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git -b v1.0.1`` (SSH) 
+  * ``git clone https://gitlab.cern.ch/ams-italy/naia.git -b v1.0.1`` (HTTPS) 
 
 * Create a build and install directory
 
