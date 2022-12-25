@@ -1,7 +1,21 @@
 The ``Event`` class
 ===================
 
-The ``Event`` class is nothing more than a collection of containers
+The ``Event`` class is nothing more than a collection of containers, which try to group variables together 
+according to specific criteria. 
+
+Although in NAIA there is no event pre-selection of any kind, there are still plenty of choices that were made
+when deciding how to get or compute all the variables in the datamodel. For example, to get a rigidity value 
+you first need to decide from which reconstructed track, and similar arguments apply to ToF, RICH, ECAL, and so on...
+
+The main containers are derived from what gbatch thinks is the best association between all the subdetectors
+signals in the event. The result of these associations is called "particle" in gbatch terminology, and the
+first one (called "particle 0", for obvious reasons) is the the most likely to represent the main particle that
+came through AMS.
+
+Some additional containers are either alternative reconstruction of the subdetector signals used by the 
+particle 0, or they represent different objects altogether. See the following table for details about
+each container. 
 
 .. list-table:: Event class layout
    :widths: 25 25 50
@@ -12,8 +26,14 @@ The ``Event`` class is nothing more than a collection of containers
      - Description
    * - `Header <https://naia-docs.web.cern.ch/naia-docs/v1.0.0/classNAIA_1_1HeaderData.html>`_
      - header
+<<<<<<< HEAD
      - Contains simple information like run number, run tag, event number and UTC time.
    * - `EventSummary <https://naia-docs.web.cern.ch/naia-docs/v1.0.0/classNAIA_1_1EventSummaryData.html>`_
+=======
+     - Contains simple information like run number, run tag, event number, event mask and UTC time. 
+       Lightweight and meant to be used as a tool to quicly identify or select an event. 
+   * - `EventSummary <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1EventSummaryData.html>`_
+>>>>>>> d4ab959 (Add a more detailed description of hoe containers are filled)
      - evSummary
      - Contains some aggregated variables to roughly describe the event. 
    * - `DAQ <https://naia-docs.web.cern.ch/naia-docs/v1.0.0/classNAIA_1_1DAQData.html>`_
@@ -21,6 +41,7 @@ The ``Event`` class is nothing more than a collection of containers
      - Contains variables describing the status of the AMS DAQ system for the event.
    * - `TofBase <https://naia-docs.web.cern.ch/naia-docs/v1.0.0/classNAIA_1_1TofBaseData.html>`_
      - tofBase
+<<<<<<< HEAD
      - Contains basic Tof variables that are accessed most frequently
    * - `TofPlus <https://naia-docs.web.cern.ch/naia-docs/v1.0.0/classNAIA_1_1TofPlusData.html>`_
      - tofPlus
@@ -65,6 +86,59 @@ The ``Event`` class is nothing more than a collection of containers
      - extHitBase
      - Contains basic variables for unbiased external hits
    * - `MCTruthBase <https://naia-docs.web.cern.ch/naia-docs/v1.0.0/classNAIA_1_1MCTruthBaseData.html>`_
+=======
+     - Contains basic Tof variables that are accessed most frequently. Constructed from the particle 0 Tof objects.
+   * - `TofPlus <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1TofPlusData.html>`_
+     - tofPlus
+     - Contains additional Tof variables that are accessed less frequently. Constructed from the particle 0 Tof objects.
+   * - `TofBaseStandalone <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1TofBaseData.html>`_
+     - tofBaseSt
+     - Contains basic Tof variables that are accessed most frequently. Constructed from the particle 0 Tof objects, 
+       but this reconstruction avoids using any information from the Tracker track. Meant to be ued for the Track 
+       reconstruction efficiency evaluation.
+   * - `TofPlusStandalone <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1TofPlusData.html>`_
+     - tofPlusSt
+     - Contains additional Tof variables that are accessed less frequently. Constructed from the particle 0 Tof objects, 
+       but this reconstruction avoids using any information from the Tracker track. Meant to be ued for the Track 
+       reconstruction efficiency evaluation.
+   * - `EcalBase <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1EcalBaseData.html>`_
+     - ecalBase
+     - Contains basic Ecal variables that are accessed most frequently. Constructed from the particle 0 ECAL shower.
+   * - `EcalPlus <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1EcalPlus.html>`_
+     - ecalPlus
+     - Contains additional Ecal variables that are accessed less frequently. Constructed from the particle 0 ECAL shower.
+   * - `TrTrackBase <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1TrTrackBaseData.html>`_
+     - trTrackBase
+     - Contains basic Track variables that are accessed most frequently. Constructed from the particle 0 Tracker track.
+   * - `TrTrackPlus <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1TrTrackPlus.html>`_
+     - trTrackPlus
+     - Contains additional Track variables that are accessed less frequently. Constructed from the particle 0 Tracker track.
+   * - `SecondTrTrackBase <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1TrTrackBaseData.html>`_
+     - secondTrTrackBase
+     - Contains basic Track variables (a subset of all the variables contained in TrTrackBase) for the "second track". This track is selected
+       by looking for the highest rigidity track (besides the primary one) with at least 5 hits.
+   * - `TrTrackBaseStandalone <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1TrTrackBaseData.html>`_
+     - trTrackBaseSt
+     - Contains basic Track variables reconstructed withouth using any Tof information. Constructed from the particle 0 track, 
+       but this reconstruction avoids using any information from the Tof. Meant to be ued for the Tof 
+       reconstruction efficiency evaluation.
+   * - `TrdKBase <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1TrdKBase.html>`_
+     - trdKBase
+     - Contains basic TRD variables that are accessed most frequently. Constructed using the TrdK method in gbatch, using the Tracker track to select TRD hits.
+   * - `TrdKBaseStandalone <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1TrdKBase.html>`_
+     - trdKBaseSt
+     - Contains basic TRD variables that are accessed most frequently. Constructed using the TrdK method in gbatch, using the Tof extrapolation to select TRD hits.
+   * - `RichBase <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1RichBaseData.html>`_
+     - richBase
+     - Contains basic RICH variables that are accessed most frequently. Constructed using the particle 0 RICH ring.
+   * - `RichPlus <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1RichPlusData.html>`_
+     - richPlus
+     - Contains additional RICH variables that are accessed less frequently. Constructed using the particle 0 RICH ring.
+   * - `UnbExtHitBase <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1UnbExtHitBaseData.html>`_
+     - extHitBase
+     - Contains basic variables for unbiased external hits. Constructed using Tof and TRD standalone information. If the event charge estimated by the Tof is greater than 1, then the highest charege hits are selected on both L1 and L9. Otherwise charge 1 hits closest to the standalone TRD (or Tof, if TRD is not availabel) extrapolation on L1/L9 are selected.
+   * - `MCTruthBase <https://naia-docs.web.cern.ch/naia-docs/v1.0.1/classNAIA_1_1MCTruthBaseData.html>`_
+>>>>>>> d4ab959 (Add a more detailed description of hoe containers are filled)
      - mcTruthBase
      - Contains basic MC truth variables that are accessed most frequently
    * - `MCTruthPlus <https://naia-docs.web.cern.ch/naia-docs/v1.0.0/classNAIA_1_1MCTruthPlusData.html>`_
