@@ -15,7 +15,7 @@ If you have access to cvmfs then you can find all the requirements in::
 
 and a ``setenv`` script is already provided with each NAIA version, e.g. for CentOS7::
 
-  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc9.3/naia/v1.0.1/setenvs/setenv_gcc6.26_cc7.sh
+  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc9.3/naia/v1.0.2/setenvs/setenv_gcc6.26_cc7.sh
 
 .. note::
 
@@ -35,9 +35,21 @@ Follow this simple procedure:
 
 * Clone this repository
 
-  * ``git clone https://:@gitlab.cern.ch:8443/ams-italy/naia.git -b v1.0.1`` (Kerberos)
-  * ``git clone ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git -b v1.0.1`` (SSH) 
-  * ``git clone https://gitlab.cern.ch/ams-italy/naia.git -b v1.0.1`` (HTTPS) 
+  * ``git clone --recursive https://:@gitlab.cern.ch:8443/ams-italy/naia.git -b v1.0.2`` (Kerberos)
+  * ``git clone --recursive ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git -b v1.0.2`` (SSH) 
+  * ``git clone --recursive https://gitlab.cern.ch/ams-italy/naia.git -b v1.0.2`` (HTTPS) 
+
+.. note::
+
+  Starting with NAIA version 1.0.2 all external dependencies are handled as submodules rather than having cmake download them during the configuration step.
+  This means that if you have already cloned the NAIA repository prior to version 1.0.2 and want to switch to it you need to initialize its submodules in 
+  order to build the project
+
+  .. code-block:: bash
+
+    git submodule init && git submodule update
+
+  If you cloned it from scratch with the recursive flag, then all submodules will already be initialized.
 
 * Create a build and install directory
 
