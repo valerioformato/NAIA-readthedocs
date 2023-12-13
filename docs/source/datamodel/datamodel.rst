@@ -24,7 +24,7 @@ The chain contains all the events in the added runs, looping over events is part
 
 .. code-block:: cpp
 
-    for (Event& event : chain){
+    for (NAIA::Event& event : chain){
       // your analysis here :)
     }
 
@@ -65,7 +65,7 @@ directly retrieve the RTI tree from the NAIA file and loop over each second.
 .. code-block:: cpp
 
   TChain* rti_chain = chain.GetRTITree();
-  NAIA::RTIInfo* rti_info = new RTIInfo();
+  NAIA::RTIInfo* rti_info = new NAIA::RTIInfo();
   rti_chain->SetBranchAddress("RTIInfo", &rti_info);
 
   for(unsigned long long isec=0; isec < rti_chain->GetEntries(); ++isec){
