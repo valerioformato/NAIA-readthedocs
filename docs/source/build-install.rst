@@ -5,17 +5,20 @@ Requirements
 ------------
 To use NAIA you'll need:
 
-* A C++ compiler with full c++14 support (tested with gcc >= 9.3.0)
+* A C++ compiler with full c++17 support (tested with gcc >= 12.1.0)
 * CMake version >= 3.13
-* A ROOT installation compiled with c++14 support (tested with ROOT >= 6.22/08, recommended 6.26/02)
+* A ROOT installation compiled with c++17 support (tested with ROOT >= 6.28/04)
+
+Supported platforms: CentOS7 and RHEL9 derivatives (Alma9, Rocky Linux9, ...)
 
 If you have access to cvmfs then you can find all the requirements in::
 
-  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc9.3/naia
+  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc12.1/naia
+  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-el9-gcc12.1/naia
 
 and a ``setenv`` script is already provided with each NAIA version, e.g. for CentOS7::
 
-  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc9.3/naia/v1.0.2/setenvs/setenv_gcc6.26_cc7.sh
+  /cvmfs/ams.cern.ch/Offline/amsitaly/public/install/x86_64-centos7-gcc12.1/naia/v1.1.0/setenvs/setenv_gcc6.28_cc7.sh
 
 .. note::
 
@@ -25,7 +28,7 @@ and a ``setenv`` script is already provided with each NAIA version, e.g. for Cen
     
       * ``export NOCXXSTD=1`` (gbatch hardcodes ``-std=c++11`` in the Makefile... This variable prevents that)
       * ``export GLIBCXX_USE_CXX11=1`` (gbatch hardcodes the old gcc ABI in the Makefile... Most likely someone didn't know what he was doing)
-      * Run ``CPPFLAGS="-std=c++14" make lib`` to build the gbatch library (if you don't want to hack the Makefile and change the C++ standard manually)
+      * Run ``CPPFLAGS="-std=c++17" make lib`` to build the gbatch library (if you don't want to hack the Makefile and change the C++ standard manually)
 
 
 Building and installing
@@ -35,14 +38,14 @@ Follow this simple procedure:
 
 * Clone this repository
 
-  * ``git clone --recursive https://:@gitlab.cern.ch:8443/ams-italy/naia.git -b v1.0.2`` (Kerberos)
-  * ``git clone --recursive ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git -b v1.0.2`` (SSH) 
-  * ``git clone --recursive https://gitlab.cern.ch/ams-italy/naia.git -b v1.0.2`` (HTTPS) 
+  * ``git clone --recursive https://:@gitlab.cern.ch:8443/ams-italy/naia.git -b v1.1.0`` (Kerberos)
+  * ``git clone --recursive ssh://git@gitlab.cern.ch:7999/ams-italy/naia.git -b v1.1.0`` (SSH) 
+  * ``git clone --recursive https://gitlab.cern.ch/ams-italy/naia.git -b v1.1.0`` (HTTPS) 
 
 .. note::
 
-  Starting with NAIA version 1.0.2 all external dependencies are handled as submodules rather than having cmake download them during the configuration step.
-  This means that if you have already cloned the NAIA repository prior to version 1.0.2 and want to switch to it you need to initialize its submodules in 
+  Starting with NAIA version 1.1.0 all external dependencies are handled as submodules rather than having cmake download them during the configuration step.
+  This means that if you have already cloned the NAIA repository prior to version 1.1.0 and want to switch to it you need to initialize its submodules in 
   order to build the project
 
   .. code-block:: bash
