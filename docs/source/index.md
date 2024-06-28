@@ -16,13 +16,13 @@ Take a look at:
 
 
 ```{toctree}
-   :maxdepth: 2
-   :hidden:
-   :caption: NAIA
+:maxdepth: 2
+:hidden:
+:caption: NAIA
 
-   /build-install
-   /datamodel/datamodel
-   /datamodel/event
-   /datamodel/skimming
-   /examples
+/build-install
+/datamodel/datamodel
+/datamodel/event
+/datamodel/skimming
+/examples
 ```
