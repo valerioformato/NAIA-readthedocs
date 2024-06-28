@@ -1,0 +1,18 @@
+stages:
+  - build
+
+.build: &build
+  stage: build
+  script: 
+    - cd docs
+    - make html
+  artifacts:
+    paths:
+      - docs/build/html
+
+build:docker:
+  <<: *build
+  tags: 
+    - docker
+  image: sphinxdoc/sphinx
+  needs: [ ]
