@@ -12,7 +12,5 @@ stages:
 
 build:docker:
   <<: *build
-  tags: 
-    - docker
   image: sphinxdoc/sphinx
   needs: [ ]
