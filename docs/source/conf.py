@@ -6,8 +6,8 @@ project = "NAIA"
 copyright = ""
 author = "Valerio Formato"
 
-release = "1.1"
-version = "1.1.0"
+release = "1.2"
+version = "1.2.2"
 
 # -- General configuration
 
