@@ -7,7 +7,7 @@ copyright = ""
 author = "Valerio Formato"
 
 release = "1.2"
-version = "1.2.2"
+version = "1.2.3"
 
 # -- General configuration
 
